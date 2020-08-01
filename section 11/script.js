@@ -1,41 +1,19 @@
-var database = [
-    {
-        username: "andrei",
-        password: "supersecret"
-    }
-]
+var css = document.querySelector("h3");
+var color1 = document.querySelector(".color1");
+var color2 = document.querySelector(".color2");
+var body = document.getElementById("gradient");
 
-var newFeed= [
-    {
-        username: "Bobby",
-        timeline: "myriad slew loads of love legion"
-    },
-    {
-        username: "Sally",
-        timeline: "Oh,  I see   Fair enough"
-    }
-]
+function setGradient() {
+    body.style.background =
+        "linear-gradient(to right, "
+        + color1.value
+        + ", "
+        + color2.value
+        + ")";
 
-let userName= prompt("what's your  username")
-let userPassword=prompt("what's your password")
-
-function isUserValid(username,password){
-    for(var i=0;i<database.length;i++){
-        if(database[i].username===username&& database[i].password===password){
-            return true;
-        }
-    }
-    return false;
+    css.textContent = body.style.background + ";";
 }
 
+color1.addEventListener("input", setGradient);
 
-function signIn(user,pass) {
-    if(user===database[0].username &&
-        pass===database[0].password){
-        console.log(newFeed)
-    }else{
-        alert("invalid!")
-    }
-}
-console.log(signIn(userName,userPassword))
-
+color2.addEventListener("input", setGradient);
